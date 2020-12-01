@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +18,4 @@ use App\Http\Controllers\ThemeController;
 Route::get('/', [ReferenceController::class, 'index']);
 Route::resource('/references',ReferenceController::class);
 Route::resource('/themes',ThemeController::class);
+Route::resource('/roles',RoleController::class);
