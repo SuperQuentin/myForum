@@ -37,7 +37,7 @@
                 <li class="nav-item"><a href="{{ route('references.index') }}" class="btn">Gestion des références</a></li>
                 <li class="nav-item"><a href="{{ route('roles.index') }}" class="btn">Gestion des rôles</a></li>
                 <li class="nav-item"><a href="{{ route('states.index') }}" class="btn">Gestion des états</a></li>
-                <li class="nav-item"><a href="#" class="btn">Modération</a></li>
+                <li class="nav-item"><a href="{{ route('opinions.index') }}" class="btn">Modération</a></li>
             </ul>
         </nav>
         <div class="container p-3">
