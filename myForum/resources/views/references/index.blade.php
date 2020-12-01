@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Page d\'accueil')
+@section('title', 'Références')
 
 @section('content')
   <h1>References</h1>
