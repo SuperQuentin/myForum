@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Theme;
 
 class ThemeController extends Controller
 {
@@ -13,7 +14,8 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        return view('themes/index');
+        $themes = Theme::all();
+        return view('themes/index', ['collection' => $themes]); 
     }
 
     /**
