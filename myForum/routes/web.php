@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReferenceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('/', [ReferenceController::class, 'index']);
+Route::get('/', [ReferenceController::class, 'index']);
+Route::resource('/references',ReferenceController::class);
