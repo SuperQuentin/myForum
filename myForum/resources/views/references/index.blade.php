@@ -1,7 +1,7 @@
-@extends('layouts.layouts')
+@extends('layouts.default')
 
 @section('title', 'Page d\'accueil')
 
 @section('content')
-  <h1>Page d'accueil</h1>
+  <h1>References</h1>
 @endsection
