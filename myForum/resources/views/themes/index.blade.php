@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
-@section('title', 'Références')
+@section('title', 'Thèmes')
 
 @section('content')
-  <h1>References</h1>
+  <h1>Theme</h1>
 @endsection
