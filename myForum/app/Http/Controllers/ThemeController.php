@@ -99,8 +99,8 @@ class ThemeController extends Controller
     public function destroy($id)
     {
         $theme = Theme::find($id);
-        $name = $theme->name;
-        $theme->delete();
-        return redirect(route('themes.index'))->with('message','Thème '.$name.' supprimé');  
+        $name = $theme->name; 
+        $theme->delete(); 
+        return redirect(route('themes.index'))->with('message','Thème '.$name.' supprimé');
     }
 }
