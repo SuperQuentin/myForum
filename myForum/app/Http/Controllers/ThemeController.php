@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Theme;
 
 class ThemeController extends Controller
 {
@@ -13,7 +14,8 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        return view('themes/index');
+        $themes = Theme::all();
+        return view('themes/index', ['collection' => $themes]); 
     }
 
     /**
@@ -23,7 +25,8 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        $theme = new Theme();
+        return view('themes.create',['theme' => $theme]);
     }
 
     /**
@@ -34,7 +37,14 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateDate = $request->validate([
+            'name' => 'required|unique:themes'
+        ]);
+
+        $theme = new Theme();
+        $theme->name = $validateDate["name"];
+        $theme->save();
+        return redirect()->route('themes.index')->with('message','Thème ajouté');    
     }
 
     /**
@@ -45,7 +55,8 @@ class ThemeController extends Controller
      */
     public function show($id)
     {
-        //
+        $theme = Theme::find($id); 
+        return view ('themes.show',['theme' => $theme]);
     }
 
     /**
@@ -56,7 +67,8 @@ class ThemeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $theme = Theme::find($id);
+        return view('themes.edit',['theme' => $theme]);
     }
 
     /**
@@ -68,7 +80,14 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateDate = $request->validate([
+            'name' => 'required|unique:themes'
+        ]);
+
+        $theme = Theme::find($id);
+        $theme->name = $validateDate["name"];
+        $theme->save();
+        return redirect()->route('themes.index')->with('message','Thème modifier');   
     }
 
     /**
@@ -79,6 +98,9 @@ class ThemeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $theme = Theme::find($id);
+        $name = $theme->name; 
+        $theme->delete(); 
+        return redirect()->route('themes.index')->with('message','Thème '.$name.' supprimé');
     }
 }
