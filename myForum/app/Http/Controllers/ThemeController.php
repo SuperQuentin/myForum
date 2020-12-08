@@ -67,7 +67,8 @@ class ThemeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $theme = Theme::find($id);
+        return view('themes.edit',['theme' => $theme]);
     }
 
     /**
@@ -79,7 +80,14 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateDate = $request->validate([
+            'name' => 'required|unique:themes'
+        ]);
+
+        $theme = Theme::find($id);
+        $theme->name = $validateDate["name"];
+        $theme->save();
+        return redirect(route('themes.index'))->with('message','Thème modifier');   
     }
 
     /**
@@ -90,6 +98,9 @@ class ThemeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $theme = Theme::find($id);
+        $name = $theme->name;
+        $theme->delete();
+        return redirect(route('themes.index'))->with('message','Thème '.$name.' supprimé');  
     }
 }
