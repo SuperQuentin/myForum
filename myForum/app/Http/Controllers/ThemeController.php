@@ -44,7 +44,7 @@ class ThemeController extends Controller
         $theme = new Theme();
         $theme->name = $validateDate["name"];
         $theme->save();
-        return redirect(route('themes.index'))->with('message','Thème ajouté');    
+        return redirect()->route('themes.index')->with('message','Thème ajouté');    
     }
 
     /**
@@ -87,7 +87,7 @@ class ThemeController extends Controller
         $theme = Theme::find($id);
         $theme->name = $validateDate["name"];
         $theme->save();
-        return redirect(route('themes.index'))->with('message','Thème modifier');   
+        return redirect()->route('themes.index')->with('message','Thème modifier');   
     }
 
     /**
@@ -101,6 +101,6 @@ class ThemeController extends Controller
         $theme = Theme::find($id);
         $name = $theme->name; 
         $theme->delete(); 
-        return redirect(route('themes.index'))->with('message','Thème '.$name.' supprimé');
+        return redirect()->route('themes.index')->with('message','Thème '.$name.' supprimé');
     }
 }

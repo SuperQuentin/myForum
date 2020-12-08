@@ -1,12 +1,6 @@
 @extends('layouts.default')
 @section('title', 'Liste des thèmes')
 @section('content')
-  @if (session('message'))
-  <div class="alert alert-warning" role="alert">
-    {{ session('message') }}
-  </div>  
-  @endif
-
   <h1>Themes</h1>
 
   @forelse ($collection as $item)

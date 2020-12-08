@@ -41,6 +41,11 @@
             </ul>
         </nav>
         <div class="container p-3">
+            @if (session('message'))
+                <div class="alert alert-warning" role="alert">
+                    {{ session('message') }}
+                </div>  
+            @endif
             @yield('content')
         </div>
         <script src="{{ asset('/js/bootstrap.js') }}">
