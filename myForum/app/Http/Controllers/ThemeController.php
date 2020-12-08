@@ -25,7 +25,8 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        $theme = new Theme();
+        return view('themes.create',['theme' => $theme]);
     }
 
     /**
@@ -36,7 +37,14 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateDate = $request->validate([
+            'name' => 'required|unique:themes'
+        ]);
+
+        $theme = new Theme();
+        $theme->name = $validateDate["name"];
+        $theme->save();
+        return redirect(route('themes.index'))->with('message','Thème ajouté');    
     }
 
     /**
@@ -47,7 +55,8 @@ class ThemeController extends Controller
      */
     public function show($id)
     {
-        //
+        $theme = Theme::find($id);
+        return view ('themes.show',['theme' => $theme]);
     }
 
     /**
