@@ -1,4 +1,5 @@
 @extends ('layouts.default')
+@section('title', 'Création d\'un thème')
 
 @section ('content')
     <form action="{{ route('themes.store') }}" method="post">
